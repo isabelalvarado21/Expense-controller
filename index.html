@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous">
+    <link rel="icon" type="image/jpg" href="assets/img/fav.png"/>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/e7d31838ca.js" crossorigin="anonymous"></script>
+    <!-- Taildwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>AhorrAdAs | Julieta Bondi | Isabel Alvarado</title>
+</head>
+<body>
+    <header class="flex justify-between bg-pink-700 py-5 px-10 text-white shadow-xl">
+        <a href="#" class="flex text-4xl" id="logo"><i class="fa-solid fa-wallet mr-3"></i><h1>AhorrADAs</h1></a>
+        <nav class="hidden lg:block">
+            <ul class="flex">
+                <li class="hover:bg-pink-600 hover:rounded-lg py-2 px-3" id="btn-balances"><a href="#" class="text-2xl"><i class="fa-solid fa-chart-line mr-2"></i>Balances</a></li>
+                <li class="ml-7 hover:bg-pink-600 hover:rounded-lg py-2 px-3" id="btn-categories"><a href="#" class="text-2xl"><i class="fa-solid fa-tag mr-2"></i>Categorías</a></li>
+                <li class="ml-7 hover:bg-pink-600 hover:rounded-lg py-2 px-3" id="btn-reports"><a href="#" class="text-2xl"><i class="fa-solid fa-chart-pie mr-2"></i>Reportes</a></li>
+            </ul>
+        </nav> 
+        <a href="#" id="btn-menu-burguer" class="lg:hidden text-2xl"><i class="fa-solid fa-bars"></i></a>      
+    </header>
+    <nav id="navbar-menu-burguer" class="hidden lg:hidden">
+        <ul class="flex-colum justify-end shadow-xl ">
+            <li id="btn-balances-burguer" class="py-5 pl-4">
+                <a href="#" class="text-2xl"><i class="fa-solid fa-chart-line mr-2"></i>Balances</a>
+            </li>
+            <li id="btn-categories-burguer" class="py-5 pl-4">
+                <a href="#" class="text-2xl"><i class="fa-solid fa-tag mr-2"></i>Categorías</a>
+            </li>
+            <li id="btn-reports-burguer" class="py-5 pl-4">
+                <a href="#" class="text-2xl"><i class="fa-solid fa-chart-pie mr-2"></i>Reportes</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="flex justify-center py-20  text-[#7a0f42]">
+        <!-- Balance Section -->
+        <section id="secBalance" class="w-[80%] md:w-[80%] sm:w-[80%] md:max-w-[1200px]">
+            <div class="flex xl:flex-row sm:flex-col flex-col justify-between w-full">
+                <div>
+                    <div id="balance" class="bg-pink-100 w-full sm:w-full p-7 mb-7 rounded-md shadow-inner text-lg sm:min-w-[380px]">
+                        <h2 class="md:text-3xl text-xl font-black ">Balance</h2>
+                        <div class="flex justify-between mt-5 font-bold">
+                            <p class="">Ganancias</p>
+                            <p class="text-green-600" id="positiveBalance">+$0</p>
+                        </div>
+                        <div class="flex justify-between mt-4 font-bold">
+                            <p class="">Gastos</p>
+                            <p class="text-red-600" id="negativeBalance">-$0</p>
+                        </div>
+                        <div class="flex justify-between mt-4 font-black">
+                            <p class="">Total</p>
+                            <p class="" id="total">$0</p>
+                        </div>
+                    </div>
+
+                    <div id="filters" class="bg-pink-100 w-full sm:w-full p-7 rounded-md shadow-inner text-lg">
+                        <div class="flex justify-between items-end">
+                            <h3 class="md:text-3xl text-xl font-black">Filtros</h3>
+                            <button class="font-bold" id="hideFilters">Ocultar Filtros</button>
+                        </div>
+                        <form class="mt-5" id="formFilters">
+                            <div class="flex flex-col">
+                                <label for="typeFilter" class="font-bold mb-1">Tipo</label>
+                                <select name="typeFilter" id="typeFilter" class="py-2 px-3 bg-white border-1 border-[#be185d] rounded-md">
+                                    <option value="all" selected>Todos</option>
+                                    <option value="spent">Gasto</option>
+                                    <option value="gain">Ganancia</option>
+                                </select>
+                            </div>
+
+                            <div class="flex flex-col">
+                                <label for="category" class="font-bold mt-4 mb-1">Categoría</label>
+                                <select name="category" id="category" class="py-2 px-3 bg-white border-1 border-[#be185d] rounded-md">
+
+                                </select>
+                            </div>
+
+                            <div class="flex flex-col">
+                                <label for="date" class="font-bold mt-4 mb-1">Desde</label>
+                                <input type="date" name="date" id="date" class="py-2 px-3 border-1 border-[#be185d] rounded-md">
+                            </div>
+
+                            <div class="flex flex-col">
+                                <label for="order" class="font-bold mt-4 mb-1">Ordenar por</label>
+                                <select name="order" id="order" class="py-2 px-3 bg-white border-1 border-[#be185d] rounded-md">
+                                    <option value="masRec" selected>Más reciente</option>
+                                    <option value="menRec">Menos reciente</option>
+                                    <option value="mayMon">Mayor monto</option>
+                                    <option value="menMon">Menor monto</option>
+                                    <option value="az">A/Z</option>
+                                    <option value="za">Z/A</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="operations" class="bg-pink-100 w-full xl:max-w-[810px] p-7 rounded-md shadow-inner h-max md:ml-0 mt-7 xl:ml-7 xl:mt-0">
+                    <div class="flex md:flex-row justify-between items-center xl:mb-7">
+                        <h3 class="md:text-2xl text-xl font-black">Operaciones</h3>
+                        <button class="py-2 md:py-3 px-2 md:px-5 mt-0 bg-[#be185d] hover:bg-pink-600 text-white rounded-lg font-bold text-sm md:text-lg mt-3 md:mt-0" id="new-operation">+ Nueva Operación</button>
+                    </div>
+                    <div id="imgOperations" class="flex justify-center py-32">
+                        <img src="assets/img/undraw_savings_re_eq4w.svg" alt="Savings" class="w-[400px]">
+                    </div>
+                    <div id="table" class="w-full border-separate border-spacing-4 hidden">
+                        <div class="md:flex lg:flex mt-7 mb-3 md:mb-4 font-bold hidden md:hidden xl:flex md:mb-5 md:w-auto md:px-o justify-between">
+                            
+                            <div class="md:w-[150px]">
+                                <h4 class="w-full text-center">Descripción</h4>
+                            </div>
+                            <div class="md:w-[150px]">
+                                <h4 class="w-full text-center">Categoría</h4>
+                            </div>
+                            <div class="md:w-[150px]">
+                                <h4 class="text-center">Fecha</h4>
+                            </div>
+                            <div class="md:w-[150px]">
+                                <h4 class="w-full text-center">Monto</h4>
+                            </div>
+                            <div class="md:w-[150px]">
+                                <h4 class="w-full text-center">Acciones</h4>
+                            </div>
+                        </div>
+                        <div id="tbodyOperation" class="font-light">
+                    
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </section>
+
+        <!-- Categories Section -->
+
+        <section id="secCategories" class="hidden">
+            <div class="bg-pink-100 max-w-[800px] md:min-w-[500px] lg:w-[800px] p-7 rounded-md shadow-inner">
+                <h2 class="text-3xl font-black pb-8">Categorías</h2>
+                <label for="input-category" class="text-lg font-bold">Nombre</label>
+                <div class="flex pb-10 justify-between">
+                    <input type="text" class="lg:w-4/5 w-[50%] h-10 rounded shadow-inner py-2 px-3" id="input-category" name="input-category">
+                    <button id="add-category"class="w-[40%] lg:w-1/6 rounded-lg bg-[#be185d] hover:bg-pink-600 text-white font-bold text-lg ">Agregar</button>
+                </div>
+                <div id="containerCategory" class="space-y-8">
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Reports Section -->
+
+        <section id="secReports" class="hidden">
+            <div class="bg-pink-100 min-w-[300px] sm:flex min-w-[400px] md:min-w-[500px] lg:w-[800px] p-7 rounded-md shadow-inner">
+                <div id="imgReports"class="flex justify-center">
+                    <div>
+                    <h2 class="text-3xl font-black">Reportes</h2>
+                    </div>
+                    <div class="">
+                        <img src="assets/img/img-reports.svg" alt="" class="w-96 pt-14 pb-10">
+                        <div class="flex-col pt-6 pb-14">
+                            <h3 class="text-center text-2xl font-black">Operaciones insuficientes</h3>
+                            <p class="text-center">Prueba agregando más operaciones</p>
+                        </div>
+                    </div>
+                </div>
+            
+                <div id="tableReports" class="w-full hidden">
+                    <div class="py-4 w-full">
+                        <h2 class="text-3xl font-black">Reportes</h2>
+                    </div>
+                    <div id="resume" class="py-4">
+                        <div class="py-8">
+                            <h3 class="text-2xl font-black">Resumen</h3>
+                        </div> 
+                        <div class="px-5">
+                            <div class="flex justify-between  py-4">
+                                <p class="bg-pink-100 font-black w-2/5">Categoría con mayor ganancia</p>
+                                <p class="w-1/4 font-semibold text-right"><span id="catMoreGain" class="bg-[#F599BF] p-1 rounded">Categoria</span></p>
+                                <p id="amountMoreGain" class="text-right text-green-500 font-bold w-1/4">$0</p>
+                            </div>
+                            <div class="flex justify-between  py-4">
+                                <p class="bg-pink-100 font-black w-2/5">Categoría con mayor gasto</p>
+                                <p  class="w-1/4 font-semibold text-right "><span id="catMinorGain" class="bg-[#F599BF] p-1 rounded">Categoria</span></p>
+                                <p id="amountMinorGain" class="text-right text-red-500 font-bold w-1/4">$0</p>
+                            </div>
+                            <div class="flex justify-between  py-4">
+                                <p class="bg-pink-100 font-black w-2/5">Categoría con mayor balance</p>
+                                <p class="w-1/4 font-semibold text-right "><span id="catMoreBalance" class="bg-[#F599BF] p-1 rounded">Categoria</span></p>
+                                <p id="amountMoreBalance" class="text-right w-1/4 font-bold">$0</p>
+                            </div>
+                            <div class="flex justify-between  py-4">
+                                <p class="bg-pink-100 font-black w-2/5">Mes con mayor Ganancia</p>
+                                <p id="monthMoreGain" class="text-right w-1/4 font-bold">Mes con mayor Ganancia</p>
+                                <p id="monthAmountMoreGain" class="text-right text-green-500 font-bold w-1/4">Mes con mayor Ganancia</p>
+                            </div>
+                            <div class="flex justify-between t py-4">
+                                <p class="bg-pink-100 font-black w-2/5">Mes con mayor gasto</p>
+                                <p id="monthMinorGain" class="text-right w-1/4 font-bold">Mes con mayor Gasto</p>
+                                <p id="montAmountMinorGain" class="text-right text-red-500 font-bold w-1/4">Mes con mayor gasto</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="totalsByCategories" class="py-4">
+                        <div class="py-8">
+                            <h3 class="text-2xl font-black">Totales por categorías</h3>
+                        </div>
+                        <div class="flex justify-between">
+                            <div class="w-full">
+                                <div class="flex justify-between bg-pink-100 font-black py-4 ">
+                                    <h4 class="text-center w-1/4">Categoria</h4>
+                                    <h4 class="text-center w-1/4">Ganancia</h4>
+                                    <h4 class="text-center w-1/4">Gastos</h4>
+                                    <h4 class="text-center w-1/4">Balance</h4>
+                                </div>
+                                <div id="contCategory" class="flex flex-col">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="totalsByMonth" class="py-4">
+                        <div class="py-8">
+                            <h3 class="text-2xl font-black">Totales por mes</h3>
+                        </div>
+                        <div class="flex justify-between">
+                            <div class="w-full">
+                                <div class="flex justify-between bg-pink-100 font-black py-4 ">
+                                    <h4 class="text-center w-1/4">Mes</h4>                            
+                                    <h4 class="text-center w-1/4">Ganancia</h4>
+                                    <h4 class="text-center w-1/4">Gastos</h4>
+                                    <h4 class="text-center w-1/4">Balance</h4>
+                                </div> 
+                                <div id="contDates" class="flex flex-col">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </section>
+
+        <!-- New Operation -->
+
+        <section id="newOperation" class="hidden">
+            <div class="flex flex-col bg-pink-100 sm:w-[700px] w-[100%] p-7 rounded-md shadow-inner">
+                <div class="mb-5">
+                    <h2 id="h2-form" class="text-3xl font-black">Nueva operación</h2>
+                    <h2 id="h2-form-edit" class="text-3xl font-black hidden">Editar Operación</h2>
+                </div>
+                <form action="" id="formNewOperation">
+                    <div class="flex flex-col mt-5 font-bold">
+                        <label for="description"  class="font-bold mb-1">Descripción</label>
+                        <input type="text" name="description" placeholder="Supermercado" id="input-description-operation" minlength="4" maxlength="20" class="py-2 px-3 bg-white border-1 border-[#be185d] rounded-md" required>
+                    </div>
+                    <div class="flex flex-col mt-5 font-bold">
+                        <label for="amount" class="font-bold mb-1">Monto</label>
+                        <input type="number" id="input-amount-operation" name="amount" placeholder="5000" class="py-2 px-3 bg-white border-1 border-[#be185d] rounded-md" required>
+                    </div>
+                    <div class="flex flex-col mt-5 font-bold">
+                        <label for="selectTypeOperation" class="font-bold mb-1">Tipo</label>
+                        <select name="selectTypeOperation" id="selectTypeOperation" class="py-2 px-3 bg-white border-1 border-[#be185d] rounded-md" required>
+                            <option value ="spent">Gasto</option>
+                            <option value ="gain">Ganancia</option>
+                        </select>
+                    </div>
+                    <div class="flex flex-col mt-5 font-bold">
+                        <label for="categoryOperation" class="font-bold mb-1">Categoría</label>
+                        <select name="categoryOperation" id="categoryOperation" class="py-2 px-3 bg-white border-1 border-[#be185d] rounded-md" required> 
+                        
+                        </select>
+                    </div>
+                    <div class="flex flex-col mt-5 font-bold">
+                        <label for="dateForm" class="font-bold mb-1">Fecha</label>
+                        <input type="date" id="dateForm" name="dateForm" class="py-2 px-3 bg-white border-1 border-[#be185d] rounded-md" required>
+                    </div>
+                    <div class="flex sm:justify-end justify-between mt-10 font-bold">
+                        <button id="btnCancelOperation"class="py-3 px-5 bg-[#d8568c] hover:bg-pink-300 text-white rounded-lg font-bold text-lg">Cancelar</button>
+                        <button id="btnAddOperation" class="py-3 px-5 bg-[#be185d] hover:bg-pink-600 text-white rounded-lg font-bold text-lg ml-3">Agregar</button>
+                        <button id="btnEditarOp" class="py-3 px-5 bg-[#be185d] hover:bg-pink-600 text-white rounded-lg font-bold text-lg ml-3 hidden">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Edit Category Section -->
+
+        <section id="editCategory" class="hidden">
+            <div class="bg-pink-100 w-[800px] p-7 rounded-md shadow-inner">
+                <h2 class="text-3xl font-black pb-8">Editar categorías</h2>
+                <label for="input-edit-category" class="text-lg font-bold">Nombre</label>
+                <div class="flex pb-10 justify-between">
+                    <input type="text" class="w-full h-10 rounded shadow-inner py-2 px-3 input-edit-category" name="input-edit-category">
+                </div>
+                <div class="flex justify-end mt-10 font-bold">
+                    <button id="btn-cat-cancel" class="py-3 px-5 bg-[#d8568c] hover:bg-pink-300 text-white rounded-lg font-bold text-lg ml-3">Cancelar</button>
+                    <button id="btn-cat-edit" class="py-3 px-5 bg-[#be185d] hover:bg-pink-600 text-white rounded-lg font-bold text-lg ml-3">Guardar</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="js/app.js"></script>
+</body>
+</html>
